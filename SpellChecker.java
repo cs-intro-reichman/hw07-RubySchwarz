@@ -2,7 +2,8 @@ import java.io.File;
 import java.util.Scanner;
 
 public class SpellChecker {
-    // Method to load the dictionary from a file
+
+    // Method to read the dictionary from a file
     public static String[] readDictionary(String fileName) {
         try {
             File file = new File(fileName);
@@ -36,7 +37,7 @@ public class SpellChecker {
         return minDistance <= threshold ? closestWord : word;
     }
 
-    // Iterative Levenshtein distance calculation
+    // Public and static method for Levenshtein distance calculation
     public static int levenshteinDistance(String s1, String s2) {
         int[] prev = new int[s2.length() + 1];
         int[] curr = new int[s2.length() + 1];
@@ -59,10 +60,10 @@ public class SpellChecker {
         return prev[s2.length()];
     }
 
-    // Main method to test the spell checker
+    // Main method for testing
     public static void main(String[] args) {
         if (args.length >= 2) {
-            String[] dictionary = readDictionary("dictionary.txt");
+            String[] dictionary = readDictionary("dictionary.txt"); // Adjust path as necessary
             String wordToCheck = args[0];
             int threshold = Integer.parseInt(args[1]);
             String correctedWord = spellChecker(wordToCheck, threshold, dictionary);
